@@ -26,6 +26,83 @@ class atm_machine:
         topframe2right = Frame(topframe2 , bd=5 , width=190, height = 300 , relief=RIDGE)
         topframe2right.grid( row=0 , column=2, padx=3)
 
+
+        #function------------------
+
+        def pin_enter():
+            pinno = self.textreceipt.get("1.0","end-1c")
+            if((pinno == str("2213")) or  (pinno == str("4323")) or  (pinno == str("5982"))):
+                self.textreceipt.delete("1.0",END)
+                self.textreceipt.insert(END,'\t\t\t ATM' + "\n\n")
+                self.textreceipt.insert(END, 'withdraw cash\t\t\t  Loan' + "\n\n")
+                self.textreceipt.insert(END, 'cash with Receipt\t\t\t Deposit' + "\n\n")
+                self.textreceipt.insert(END, 'Balance\t\t\t  Request New Pin' + "\n\n")
+                self.textreceipt.insert(END, 'Mini Statement\t\t\t  Print Statement' + "\n\n")
+                self.btnArrowL1.config(state=NORMAL)
+                self.btnArrowR1 = Button(topframe2right, width=160, height = 60 , state= NORMAL,
+                image=self.img_arrow_Right).grid(row=0 , column=0, padx=2 , pady=2)
+
+                self.btnArrowR2 = Button(topframe2right, width=160, height = 60 , state= NORMAL,
+                image=self.img_arrow_Right).grid(row=1 , column=0, padx=2 , pady=2)
+
+                self.btnArrowR3 = Button(topframe2right, width=160, height = 60 , state= NORMAL,
+                image=self.img_arrow_Right).grid(row=2 , column=0, padx=2 , pady=2)
+
+                self.btnArrowR4 = Button(topframe2right, width=160, height = 60 , state= NORMAL,
+                image=self.img_arrow_Right).grid(row=3 , column=0, padx=2 , pady=2)
+                
+                #--------------------------------
+                self.btnArrowL1 = Button(topframe2left, width=160, height = 60 , state= NORMAL,
+                image=self.img_arrow_Left).grid(row=0 , column=0, padx=2 , pady=2)
+
+                self.btnArrowL2 = Button(topframe2left, width=160, height = 60 , state= NORMAL,
+                image=self.img_arrow_Left).grid(row=1 , column=0, padx=2 , pady=2)
+
+                self.btnArrowL3 = Button(topframe2left, width=160, height = 60 , state=NORMAL,
+                image=self.img_arrow_Left).grid(row=2 , column=0, padx=2 , pady=2)
+
+                self.btnArrowL4 = Button(topframe2left, width=160, height = 60 , state= NORMAL,
+                image=self.img_arrow_Left).grid(row=3 , column=0, padx=2 , pady=2)
+            else:
+                
+                
+
+
+        def clear():
+            self.btnArrowL1 = Button(topframe2left, width=160, height = 60 , state= DISABLED,
+            image=self.img_arrow_Left).grid(row=0 , column=0, padx=2 , pady=2)
+
+            self.btnArrowL2 = Button(topframe2left, width=160, height = 60 , state= DISABLED,
+            image=self.img_arrow_Left).grid(row=1 , column=0, padx=2 , pady=2)
+
+            self.btnArrowL3 = Button(topframe2left, width=160, height = 60 , state=DISABLED,
+            image=self.img_arrow_Left).grid(row=2 , column=0, padx=2 , pady=2)
+
+            self.btnArrowL4 = Button(topframe2left, width=160, height = 60 , state= DISABLED,
+            image=self.img_arrow_Left).grid(row=3 , column=0, padx=2 , pady=2)
+
+        #--------------------------------
+            self.img_arrow_Right= PhotoImage(file = "rightarraow.png")
+            self.btnArrowR1 = Button(topframe2right, width=160, height = 60 , state= DISABLED,
+            image=self.img_arrow_Right).grid(row=0 , column=0, padx=2 , pady=2)
+
+            self.btnArrowR2 = Button(topframe2right, width=160, height = 60 , state= DISABLED,
+            image=self.img_arrow_Right).grid(row=1 , column=0, padx=2 , pady=2)
+
+            self.btnArrowR3 = Button(topframe2right, width=160, height = 60 , state= DISABLED,
+            image=self.img_arrow_Right).grid(row=2 , column=0, padx=2 , pady=2)
+
+            self.btnArrowR4 = Button(topframe2right, width=160, height = 60 , state= DISABLED,
+            image=self.img_arrow_Right).grid(row=3 , column=0, padx=2 , pady=2)
+
+        def insert0():
+            value0=0
+            self.txtreceipt.insert(END,value0 )
+            
+            
+
+        
+
         #widgets
         self.txtreceipt= Text(topframe2mid, height=17 , width=42 , bd=12 , font=('arial' , 9 , 'bold'))
         self.txtreceipt.grid(row=0, column=0)
@@ -56,6 +133,7 @@ class atm_machine:
 
         self.btnArrowR4 = Button(topframe2right, width=160, height = 60 , state= DISABLED,
         image=self.img_arrow_Right).grid(row=3 , column=0, padx=2 , pady=2)
+
 
 
          #Pin Numbers
@@ -91,16 +169,35 @@ class atm_machine:
 
 
         self.img_clear= PhotoImage(file = "clear.png")
-        self.btn_clear = Button(topframe1, width=160, height = 60 , 
+        self.btn_clear = Button(topframe1, width=160, height = 60 , command=clear,
         image=self.img_clear).grid(row=3, column=3, padx=6 , pady=4)
 
         #-------------------------
+        self.img7= PhotoImage(file = "seven.png")
+        self.btn7 = Button(topframe1, width=160, height = 60 , 
+        image=self.img7).grid(row=4, column=0, padx=6 , pady=4)
+
+        self.img8= PhotoImage(file = "eight.png")
+        self.btn8 = Button(topframe1, width=160, height = 60 , 
+        image=self.img8).grid(row=4, column=1, padx=6 , pady=4)
+
+        self.img9= PhotoImage(file = "nine.png")
+        self.btn9 = Button(topframe1, width=160, height = 60 , 
+        image=self.img9).grid(row=4, column=2, padx=6 , pady=4)
+
+
+        self.img_enter= PhotoImage(file = "enter.png")
+        self.btn_enter = Button(topframe1, width=160, height = 60 , 
+        image=self.img_enter).grid(row=4, column=3, padx=6 , pady=4)
+    
+
+        #----------------
         self.img_space1= PhotoImage(file = "empty.png")
         self.btn7 = Button(topframe1, width=160, height = 60 , 
         image=self.img_space1).grid(row=5 , column=0, padx=6 , pady=4)
 
         self.img_zero= PhotoImage(file = "zero.png")
-        self.btn8 = Button(topframe1, width=160, height = 60 , 
+        self.btn8 = Button(topframe1, width=160, height = 60 , command=insert0,
         image=self.img_zero).grid(row=5 , column=1, padx=6 , pady=4)
 
         self.img_space2= PhotoImage(file = "empty.png")
@@ -111,16 +208,6 @@ class atm_machine:
         self.img_space3= PhotoImage(file = "empty.png")
         self.btn_enter= Button(topframe1, width=160, height = 60 , 
         image=self.img_space3).grid(row=5, column=3, padx=6 , pady=4)
-
-
-
-
-
-
-
-
-
-
 
 
 
